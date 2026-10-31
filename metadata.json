@@ -1,0 +1,6 @@
+{
+  "name": "Star Super Speciality Dental Hospital",
+  "description": "Professional 1000000 INR site for Star Super Speciality Dental Hospital in Anantapur.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
