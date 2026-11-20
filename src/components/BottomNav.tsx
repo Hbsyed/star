@@ -1,4 +1,4 @@
-import { Home, Stethoscope, Sparkles, CalendarCheck, Star } from 'lucide-react';
+import { Home, UserRound, Stethoscope, CalendarCheck, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function BottomNav() {
@@ -6,14 +6,13 @@ export default function BottomNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'doctor', 'services', 'ai-triage', 'booking', 'reviews'];
+      const sections = ['home', 'doctor', 'services', 'booking', 'reviews'];
       let current = 'home';
       
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // If the section's top is in the upper half of the viewport
           if (rect.top <= window.innerHeight / 2) {
             current = section;
           }
@@ -28,15 +27,15 @@ export default function BottomNav() {
 
   const navItems = [
     { id: 'home', label: 'Home', icon: Home, href: '#home' },
+    { id: 'doctor', label: 'Doctor', icon: UserRound, href: '#doctor' },
+    { id: 'booking', label: 'Book', icon: CalendarCheck, href: '#booking', special: true },
     { id: 'services', label: 'Services', icon: Stethoscope, href: '#services' },
-    { id: 'ai-triage', label: 'AI Triage', icon: Sparkles, href: '#ai-triage', special: true },
-    { id: 'booking', label: 'Book', icon: CalendarCheck, href: '#booking' },
     { id: 'reviews', label: 'Reviews', icon: Star, href: '#reviews' },
   ];
 
   return (
     <div 
-      className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-40 shadow-[0_-4px_15px_rgba(0,0,0,0.05)]"
+      className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-md border-t border-gold-500/25 z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.6)]"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       <div className="flex justify-around items-center h-16 px-1">
@@ -46,18 +45,18 @@ export default function BottomNav() {
             href={item.href}
             className={`flex flex-col items-center justify-center w-full h-full transition-colors relative ${
               item.special 
-                ? 'text-teal-600' 
-                : activeSection === item.id ? 'text-slate-900' : 'text-slate-400 hover:text-slate-900'
+                ? 'text-gold-400' 
+                : activeSection === item.id ? 'text-gold-400' : 'text-neutral-500 hover:text-gold-300'
             }`}
           >
             {item.special ? (
-              <div className="absolute -top-5 bg-teal-600 text-white p-3.5 rounded-full border-4 border-white shadow-md shadow-teal-500/20">
+              <div className="absolute -top-5 bg-gradient-to-br from-gold-300 via-gold-500 to-gold-600 text-black p-3.5 rounded-full border-4 border-[#0A0A0A] shadow-lg shadow-gold-500/25">
                 <item.icon className="w-5 h-5" />
               </div>
             ) : (
-              <item.icon className={`w-5 h-5 mb-1 transition-all ${activeSection === item.id ? 'fill-slate-900 text-slate-900 scale-110' : ''}`} />
+              <item.icon className={`w-5 h-5 mb-1 transition-transform ${activeSection === item.id ? 'text-gold-400 scale-110' : ''}`} />
             )}
-            <span className={`text-[10px] font-semibold ${item.special ? 'mt-6' : ''}`}>
+            <span className={`text-[10px] font-semibold ${item.special ? 'mt-6 text-gold-400' : ''}`}>
               {item.label}
             </span>
           </a>

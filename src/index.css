@@ -3,4 +3,25 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", sans-serif;
   --font-display: "Outfit", sans-serif;
+
+  --color-gold-200: #F8E7B0;
+  --color-gold-300: #F0D27A;
+  --color-gold-400: #E5C158;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #B89225;
+  --color-gold-700: #8F6F18;
+}
+
+@layer base {
+  html {
+    background-color: #080808;
+    color: #FAF7F0;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #080808;
+    color: #FAF7F0;
+  }
 }
